@@ -8,13 +8,14 @@ let BMR;
     function calcBMR(gender, weightKG, heightCM, age) {
     
         // Calculate BMR
-        if (gender === 'male') {
+        if (gender == 'male') {
             let BMR = 10 * weightKG + 6.25 * heightCM - 5 * age + 5;
         } else {
             let BMR = 10 * weightKG + 6.25 * heightCM - 5 * age - 161;
         }
     
-        console.log(BMR);
-        document.getElementById("output").innerHTML = BMR;
-        return false;
-    }
+    console.log(BMR);
+    document.getElementById("output").textContent = "Your BMR is " + BMR;
+    event.preventDefault();
+    return;
+}
