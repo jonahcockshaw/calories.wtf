@@ -5,20 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calories.wtf</title>
-    <link rel="stylesheet" href="https://github.com/jonahcockshaw/calories.wtf/blob/main/style.css">
+    <script>
+        function calcBMR() {
+    let gender = document.getElementById("gender").value;
+    let weightKG = document.getElementById("weight").value;
+    let heightCM = document.getElementById("height").value;
+    let age = document.getElementById("age").value;
+    let BMR;
+    // Calculate BMR
+    if (gender === 'male') {
+        BMR = 10 * weightKG + 6.25 * heightCM - 5 * age + 5;
+    } else {
+        BMR = 10 * weightKG + 6.25 * heightCM - 5 * age - 161;
+    }
+
+    console.log(BMR);
+    document.getElementById("output").textContent = "Your BMR is " + BMR;
+    event.preventDefault();
+    return;
+}
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+   
+body {
+    background: #fbfaf5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero {
+    text-align: center;
+}
+
+h1 {
+
+}
+
+h4 {
+    font-weight: 400;
+}
+
+p {
+    font-size: smaller;
+}
+
+form {
+    border-radius: 5px;
+    border-style: groove;
+    padding: 5px;
+}
+
+footer {
+    width: 100%;
+    font-size: small;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
     </style>
 </head>
 <body>
-   <script src="https://github.com/jonahcockshaw/calories.wtf/blob/main/script.js"></script>
-   <section class="hero">
-       <h1>Calories... wtf?</h1>
-       <h4>Let's make calories less confusing, shall we?</h4>
-       <p>This free tool is coming soon!</p>
-   </section>
-   <section>
-       <form id="bmrForm" onsubmit="calcBMR()">
+    <section>
+        <h1>Calories...wtf?</h1>
+        <h4>Let's make calories less confusing, shall we?</h4>
+        <p>This free tool will help you calculate your recommended caloric intake based on your body type, goals and lifestyle.</p>
+    </section>
+    <section>
+        <form class="form" id="bmrForm" onsubmit="calcBMR()">
             <input type="text" id="gender" placeholder="Male or female?">
             <input type="number" id="weight" placeholder="Weight in KG">
             <input type="number" id="height" placeholder="Height in CM">
@@ -26,9 +79,9 @@
             <button type="submit" id="submitBtn">Do Magic!</button>
         </form>
         <p id="output"></p>
-   </section>
-   <footer>
-       <a href ="https://github.com/jonahcockshaw/calories.wtf/"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24px"></a>
-   </footer>
+    </section>
+    <footer>
+        <a href ="https://github.com/jonahcockshaw/calories.wtf/"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24px"></a>
+    </footer>
 </body>
 </html>
