@@ -16,6 +16,16 @@
        <h4>Let's make calories less confusing, shall we?</h4>
        <p>This free tool is coming soon!</p>
    </section>
+   <section>
+       <form id="bmrForm" onsubmit="calcBMR()">
+            <input type="text" id="gender" placeholder="Male or female?">
+            <input type="number" id="weight" placeholder="Weight in KG">
+            <input type="number" id="height" placeholder="Height in CM">
+            <input type="number" id="age" placeholder="How old are you?">
+            <button type="submit" id="submitBtn">Do Magic!</button>
+        </form>
+        <p id="output"></p>
+   </section>
    <footer>
        <a href ="https://github.com/jonahcockshaw/calories.wtf/"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24px"></a>
    </footer>
