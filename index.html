@@ -72,10 +72,10 @@ footer {
     </section>
     <section>
         <form class="form" id="bmrForm" onsubmit="calcBMR()">
-            <input type="text" id="gender" placeholder="Male or female?">
-            <input type="number" id="weight" placeholder="Weight in KG">
-            <input type="number" id="height" placeholder="Height in CM">
-            <input type="number" id="age" placeholder="How old are you?">
+            <input type="text" id="gender" placeholder="Male or female?" required>
+            <input type="number" id="weight" placeholder="Weight in KG" required>
+            <input type="number" id="height" placeholder="Height in CM" required>
+            <input type="number" id="age" placeholder="How old are you?" required>
             <button type="submit" id="submitBtn">Do Magic!</button>
         </form>
         <p id="output"></p>
