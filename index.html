@@ -13,7 +13,7 @@
     let age = document.getElementById("age").value;
     let BMR;
     // Calculate BMR
-    if (gender === 'male') {
+    if (gender == 'male') {
         BMR = 10 * weightKG + 6.25 * heightCM - 5 * age + 5;
     } else {
         BMR = 10 * weightKG + 6.25 * heightCM - 5 * age - 161;
