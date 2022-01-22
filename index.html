@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.calories.wtf/style.css">
-    <title>Calories.wtf</title>
+    <title>Calories.wtf</title> 
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <script src="https://www.calories.wtf/script.js"></script>
-<section class="hero">
+    <script src="./script.js"></script>
+    <section class="hero">
         <h1>Calories...wtf?</h1>
         <h4>Let's make calories less confusing, shall we?</h4>
         <p>This free tool will help you calculate your recommended caloric intake based on your body type, goals and lifestyle.</p>
@@ -22,9 +22,11 @@
             <label class="custom-select">
                 <!-- What is your gender? -->
                 <select name="gender" class="field" id="gender" required>
+                    <option class="option-placeholder" value="" disabled selected>What is your sex?</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
+                <!-- <span class="placeholder">What is your sex?</span> -->
             </label>
             <label class="custom-field">
                 <input type="number" class="field" id="age" name="amountInput" min="16" max="80" value="" oninput="this.form.amountRange.value=this.value" required>
@@ -41,15 +43,17 @@
             </label>            
             
             <!--Enter Activity Levels-->
-            <label class="custom-select">
+            <label class="custom-select" style="margin-top: 20px;">
                 <!-- How active are you? -->
                 <select name="activity" class="field" id="activity" required>
+                    <option class="option-placeholder" value="" disabled selected>How active are you?</option>
                     <option value="1">Sedentary</option>
                     <option value="2">Lightly Active</option>
                     <option value="3">Moderately Active</option>
                     <option value="4">Very Active</option>
                     <option value="5">Extremely Active</option>
                 </select>
+                <!-- <span class="placeholder">How active are you?</span> -->
             </label>
             
             <!--Enter Goal and Contact Info
