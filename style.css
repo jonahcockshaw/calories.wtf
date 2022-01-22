@@ -107,6 +107,7 @@ form {
     margin-bottom: 5px;
     position: relative;
     font-size: 14px;
+    appearance: none;
 }
 
 .option-placeholder {
