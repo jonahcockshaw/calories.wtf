@@ -64,7 +64,6 @@
             }
 
             .form-section {
-                width: 100vw;
                 display: grid;
                 justify-content: center;
             }
@@ -74,8 +73,6 @@
                 display: grid;
                 justify-content: center;
                 width: fit-content;
-                width: 100vw;
-                max-width: 500px;
                 margin-top: 50px;
             }
 
@@ -83,9 +80,7 @@
                 border-radius: 5px;
                 border-style: none;
                 margin-bottom: 10px;
-                padding: 15px;
-                width: 100vw;
-                max-width: 500px;
+                padding: 10px;
             }
 
             select {
@@ -101,10 +96,11 @@
             }
 
             button {
-                background-color: aqua;
+                background-color: orange;
                 padding: 10px;
                 border-radius: 5px;
-                border-style: none;
+                border-color: black;
+                width: max-content;
             }
 
             footer {
@@ -127,21 +123,21 @@
             
             <!--Enter Age and Gender-->
             <h4>Age & Gender</h4>
-            <select name="gender" id="gender">
+            <select name="gender" id="gender" required>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
             <input type="range" name="amountRange" min="16" max="80" value="30" oninput="this.form.amountInput.value=this.value">
-            <input type="number" id="age" name="amountInput" min="16" max="80" value="30" oninput="this.form.amountRange.value=this.value">
+            <input type="number" id="age" name="amountInput" min="16" max="80" value="30" oninput="this.form.amountRange.value=this.value" required>
             
             <!--Enter Height and Weight-->
             <h4>Your Measurements</h4>            
-            <input type="number" id="weight" placeholder="Weight in KG">
-            <input type="number" id="height" placeholder="Height in CM">
+            <input type="number" id="weight" placeholder="Weight in KG" required>
+            <input type="number" id="height" placeholder="Height in CM" required>
             
             <!--Enter Activity Levels-->
             <h4>Your Activity Level</h4>
-            <select name="activity" id="activity">
+            <select name="activity" id="activity" required>
                 <option value="1">Sedentary</option>
                 <option value="2">Lightly Active</option>
                 <option value="3">Moderately Active</option>
