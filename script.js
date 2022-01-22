@@ -32,3 +32,9 @@ function calcTDEE() {
     event.preventDefault();
     return;
 }
+
+// When the user clicks on <div>, open the popup
+function openPopUp() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
