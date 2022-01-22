@@ -11,6 +11,7 @@
             let weightKG = document.getElementById("weight").value;
             let heightCM = document.getElementById("height").value;
             let age = document.getElementById("age").value;
+            let activity = document.getElementById("activity").value;
             let BMR;
             let calories;
             // Calculate BMR
@@ -21,19 +22,19 @@
             }
 
             // Calculate Calories
-            if (activity == '1') {
+            if (activity = '1') {
                 calories = BMR * 1.2
-            } if (activity == '2') {
+            } if (activity = '2') {
                 calories = BMR * 1.375
-            } if (activity == '3') {
+            } if (activity = '3') {
                 calories = BMR * 1.55
-            } if (activity == '4') {
+            } if (activity = '4') {
                 calories = BMR * 1.725
-            } if (activity == '5') {
+            } if (activity = '5') {
                 calories = BMR * 1.9
             }
 
-            console.log(BMR);
+            console.log("Success!");
             document.getElementById("bmrOutput").textContent = "Your BMR is " + BMR;
             document.getElementById("calorieNeedsOutput").textContent = "Your Caloric Needs are " + calories;
             event.preventDefault();
@@ -121,7 +122,7 @@
         <p>This free tool will help you calculate your recommended caloric intake based on your body type, goals and lifestyle.</p>
     </section>
     <section class="form-section">
-        <form class="form" id="bmrForm" onsubmit="calcCals()">
+        <form class="form" id="bmrForm" onsubmit="calcCals();">
             
             <!--Enter Age and Gender-->
             <h4>Age & Gender</h4>
@@ -134,18 +135,18 @@
             
             <!--Enter Height and Weight-->
             <h4>Your Measurements</h4>            
-            <input type="number" id="weight" placeholder="Weight in KG" required>
-            <input type="number" id="height" placeholder="Height in CM" required>
+            <input type="number" id="weight" placeholder="Weight in KG">
+            <input type="number" id="height" placeholder="Height in CM">
             
             <!--Enter Activity Levels-->
             <h4>Your Activity Level</h4>
-            <fieldset class="activity-select" id="activity">
-                <label><input type="radio" value="1" name="activity">Sedentary</label>
-                <label><input type="radio" value="2" name="activity">Lightly Active</label>
-                <label><input type="radio" value="3" name="activity">Moderately Active</label>
-                <label><input type="radio" value="4" name="activity">Very Active</label>
-                <label><input type="radio" value="5" name="activity">Extremeley Active</label>
-            </fieldset>
+            <select name="activity" id="activity">
+                <option value="1">Sedentary</option>
+                <option value="2">Lightly Active</option>
+                <option value="3">Moderately Active</option>
+                <option value="4">Very Active</option>
+                <option value="5">Extremely Active</option>
+            </select>
             
             <!--Enter Goal and Contact Info-->
             <h4>Your Goal + Contact Info</h4>
