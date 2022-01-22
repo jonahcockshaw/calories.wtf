@@ -6,101 +6,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calories.wtf</title>
     <script>
-        function calcBMR() {
-    let gender = document.getElementById("gender").value;
-    let weightKG = document.getElementById("weight").value;
-    let heightCM = document.getElementById("height").value;
-    let age = document.getElementById("age").value;
-    let BMR;
-    // Calculate BMR
-    if (gender == 'male') {
-        BMR = 10 * weightKG + 6.25 * heightCM - 5 * age + 5;
-    } else {
-        BMR = 10 * weightKG + 6.25 * heightCM - 5 * age - 161;
-    }
+        function calcCals() {
+            let gender = document.getElementById("gender").value;
+            let weightKG = document.getElementById("weight").value;
+            let heightCM = document.getElementById("height").value;
+            let age = document.getElementById("age").value;
+            let BMR;
+            let calories;
+            // Calculate BMR
+            if (gender == 'male') {
+                BMR = 10 * weightKG + 6.25 * heightCM - 5 * age + 5;
+            } else {
+                BMR = 10 * weightKG + 6.25 * heightCM - 5 * age - 161;
+            }
 
-    console.log(BMR);
-    document.getElementById("output").textContent = "Your BMR is " + BMR;
-    event.preventDefault();
-    return;
-}
+            // Calculate Calories
+            if (activity == '1') {
+                calories = BMR * 1.2
+            } if (activity == '2') {
+                calories = BMR * 1.375
+            } if (activity == '3') {
+                calories = BMR * 1.55
+            } if (activity == '4') {
+                calories = BMR * 1.725
+            } if (activity == '5') {
+                calories = BMR * 1.9
+            }
+
+            console.log(BMR);
+            document.getElementById("bmrOutput").textContent = "Your BMR is " + BMR;
+            document.getElementById("calorieNeedsOutput").textContent = "Your Caloric Needs are " + calories;
+            event.preventDefault();
+            return;
+        }
     </script>
-    <style>
+    <style>      
+            body {
+                background: #fbfaf5;
+                font-family: 'Poppins', sans-serif;
+            }
 
-   
-body {
-    background: #fbfaf5;
-    font-family: 'Poppins', sans-serif;
-}
+            .hero {
+                text-align: center;
+            }
 
-.hero {
-    text-align: center;
-}
+            h1 {
 
-h1 {
+            }
 
-}
+            h4 {
+                font-weight: 400;
+            }
 
-h4 {
-    font-weight: 400;
-}
+            p {
+                font-size: smaller;
+            }
 
-p {
-    font-size: smaller;
-}
+            .form-section {
+                width: 100vw;
+                display: grid;
+                justify-content: center;
+            }
 
-.form-section {
-    width: 100vw;
-    display: grid;
-    justify-content: center;
-}
+            form {
+                border-radius: 15px;
+                border-style:dashed;
+                padding: 15px;
+                display: grid;
+                justify-content: center;
+                width: fit-content;
+                width: 500px;
+            }
 
-form {
-    border-radius: 15px;
-    border-style:dashed;
-    padding: 15px;
-    display: grid;
-    justify-content: center;
-    width: fit-content;
-    width: 500px;
-}
+            input {
+                border-radius: 5px;
+                border-style: none;
+                padding: 10px;
+                margin-bottom: 10px;
+                width: 450px;
+            }
 
-input {
-    border-radius: 5px;
-    border-style: none;
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 450px;
-}
+            select {
+                border-radius: 5px;
+                border-style: none;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
 
-select {
-    border-radius: 5px;
-    border-style: none;
-    padding: 10px;
-    margin-bottom: 10px;
-}
+            .activity-select {
+                display: block;
+                border-style: none;
+            }
 
-.activity-select {
-    display: grid;
-    justify-content: left;
-    border-style: none;
-}
+            button {
+                background-color: aqua;
+                padding: 10px;
+                border-radius: 5px;
+                border-style: none;
+            }
 
-button {
-    background-color: aqua;
-    padding: 10px;
-    border-radius: 5px;
-    border-style: none;
-}
-
-footer {
-    width: 100%;
-    font-size: small;
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-    </style>
+            footer {
+                width: 100%;
+                font-size: small;
+                text-align: center;
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+                </style>
 </head>
 <body>
     <section class="hero">
@@ -109,7 +121,7 @@ footer {
         <p>This free tool will help you calculate your recommended caloric intake based on your body type, goals and lifestyle.</p>
     </section>
     <section class="form-section">
-        <form class="form" id="bmrForm" onsubmit="calcBMR()">
+        <form class="form" id="bmrForm" onsubmit="calcCals()">
             
             <!--Enter Age and Gender-->
             <h4>Age & Gender</h4>
@@ -117,7 +129,7 @@ footer {
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
-            <input type="range" id="age" name="amountRange" min="16" max="80" value="30" oninput="this.form.amountInput.value=this.value">
+            <input type="range" name="amountRange" min="16" max="80" value="30" oninput="this.form.amountInput.value=this.value">
             <input type="number" id="age" name="amountInput" min="16" max="80" value="30" oninput="this.form.amountRange.value=this.value">
             
             <!--Enter Height and Weight-->
@@ -128,11 +140,11 @@ footer {
             <!--Enter Activity Levels-->
             <h4>Your Activity Level</h4>
             <fieldset class="activity-select" id="activity">
-                <label><input type="radio" value="sedentary" name="activity">Sedentary</label>
-                <label><input type="radio" value="lightly active" name="activity">Lightly Active</label>
-                <label><input type="radio" value="moderately active" name="activity">Moderately Active</label>
-                <label><input type="radio" value="very active" name="activity">Very Active</label>
-                <label><input type="radio" value="extremeley active" name="activity">Extremeley Active</label>
+                <label><input type="radio" value="1" name="activity">Sedentary</label>
+                <label><input type="radio" value="2" name="activity">Lightly Active</label>
+                <label><input type="radio" value="3" name="activity">Moderately Active</label>
+                <label><input type="radio" value="4" name="activity">Very Active</label>
+                <label><input type="radio" value="5" name="activity">Extremeley Active</label>
             </fieldset>
             
             <!--Enter Goal and Contact Info-->
@@ -148,7 +160,8 @@ footer {
                 <!--Submit Button-->
             <button type="submit" id="submitBtn">Do Magic!</button>
         </form>
-        <p id="output"></p>
+        <p id="bmrOutput"></p>
+        <p id="calorieNeedsOutput"></p>
     </section>
     <footer>
         <a href ="https://github.com/jonahcockshaw/calories.wtf/"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24px"></a>
