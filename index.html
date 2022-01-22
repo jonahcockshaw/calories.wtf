@@ -42,95 +42,147 @@
         }
     </script>
     <style>      
-            body {
-                background: #fbfaf5;
-                font-family: 'Poppins', sans-serif;
-                padding: 15px;
-            }
+body {
+    background: #fbfaf5;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
 
-            .hero {
-                text-align: center;
-            }
+.hero {
+    text-align: center;
+}
 
-            h1 {
+.form-section {
+    display: grid;
+    justify-content: center;
+    width: max-content;
+    text-align: center;               
+}
 
-            }
+form {
+    border-radius: 15px;
+    border-style: none;
+    display: grid;
+    justify-content: center;
+    max-width: 100vw;
+    width: 450px;
+    margin-top: 50px;
+    padding: 15px;
 
-            h4 {
-                font-weight: 400;
-            }
+}
 
-            p {
-                font-size: smaller;
-            }
+.field {
+     border: none;
+     -webkit-appearance: none;
+     -ms-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+    background: #f2f2f2;
+    padding: 12px;
+    border-radius: 3px;
+    width: 250px;
+    outline: none;
+    font-size: 14px;
+}
 
-            .form-section {
-                display: grid;
-                justify-content: center;
-                width: max-content;
-                text-align: center;               
-            }
+.field:focus::placeholder {
+    color: transparent;
+}
 
-            form {
-                border-radius: 15px;
-                border-style: solid;
-                display: grid;
-                justify-content: center;
-                max-width: 100vw;
-                width: 450px;
-                margin-top: 50px;
-                padding: 15px;
+.field::placeholder {
+    color: #222;
+    transition: color 0.3s ease;
+}
 
-            }
+.custom-field {
+    position: relative;
+    font-size: 14px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+}
 
-            input {
-                border-radius: 5px;
-                border-style: solid;
-                border-color: black;
-                border-width: 2px;
-                margin-bottom: 10px;
-                padding: 10px;
-                max-width: 100vw;;
-                width: 400px;
-            }
+.custom-field .placeholder {
+    position: absolute;
+    left: 12px;
+    top: calc(50% + 10px);
+    transform: translateY(-50%);
+    color: #aaa;
+    transition: 
+        top 0.3s ease,
+        font-size 0.3s ease,
+        color 0.3s ease;
+}
 
-            select {
-                border-radius: 5px;
-                border-style: solid;
-                border-color: black;
-                border-width: 2px;
-                padding: 10px;
-                margin-bottom: 10px;
-                max-width: 100vw;
-                width: 400px;
-            }
+.custom-field input {
+    background: none;
+    border: 2px solid #ddd;
+    transition: border-color 0.3s ease;
+}
 
-            .activity-select {
-                display: block;
-                border-style: none;
-            }
+.custom-field input:valid,
+.custom-field input:focus {
+    border-color: #222;
+    transition-delay: 0.1s;
+}
 
-            button {
-                background-color: orange;
-                padding: 10px;
-                border-radius: 5px;
-                border-width: 2px;
-                border-style: solid;
-                border-color: black;
-                width: max-content;
-            }
+.custom-field input:valid + .placeholder,
+.custom-field input:focus + .placeholder {
+    top: 20px;
+    font-size: 10px;
+    background: white;
+    color: #222;
+    padding: 0 5px;
+}
 
-            footer {
-                width: 100%;
-                font-size: small;
-                text-align: center;
-                padding-top: 50px;
-                padding-bottom: 50px;
-            }
+.custom-field input:valid + .placeholder,
+.custom-field input:focus + .placeholder {
+    top: 20px;
+    background: white;
+    padding: 0 5px;
+
+}
+
+/* .custom-select {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    color: #888;
+}
+
+.custom-select select {
+    width: 200px;
+    min-height: 35px;
+    background: #cbe7ff;
+    border-radius: 3px;
+    border: 2px solid #2196f3;
+    outline: none;
+} */
+
+button {
+    background-color: orange;
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    width: max-content;
+}
+
+footer {
+    width: 100%;
+    font-size: small;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
                 </style>
 </head>
 <body>
-    <section class="hero">
+<section class="hero">
         <h1>Calories...wtf?</h1>
         <h4>Let's make calories less confusing, shall we?</h4>
         <p>This free tool will help you calculate your recommended caloric intake based on your body type, goals and lifestyle.</p>
@@ -140,26 +192,38 @@
             
             <!--Enter Age and Gender-->
             <h4>Age & Gender</h4>
-            <select name="gender" id="gender" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-            <input type="number" id="age" name="amountInput" min="16" max="80" value="" placeholder="How old are you?" oninput="this.form.amountRange.value=this.value" required>
-            <input type="range" name="amountRange" min="16" max="80" value="30" oninput="this.form.amountInput.value=this.value">            
+            <label class="custom-select">
+                <!-- What is your gender? -->
+                <select name="gender" class="field" id="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </label>
+            <label class="custom-field">
+                <input type="number" class="field" id="age" name="amountInput" min="16" max="80" value="" oninput="this.form.amountRange.value=this.value" required>
+                <span class="placeholder">How old are you?</span>
+            </label>
             <!--Enter Height and Weight-->
-            <h4>Your Measurements</h4>            
-            <input type="number" id="weight" placeholder="Weight in KG" required>
-            <input type="number" id="height" placeholder="Height in CM" required>
+            <label class="custom-field">
+                <input type="number" class="field" id="weight" required>
+                <span class="placeholder">Weight in KG</span>
+            </label>
+            <label class="custom-field">
+                <input type="number" class="field" id="height" required>
+                <span class="placeholder">Height in CM</span>
+            </label>            
             
             <!--Enter Activity Levels-->
-            <h4>Your Activity Level</h4>
-            <select name="activity" id="activity" required>
-                <option value="1">Sedentary</option>
-                <option value="2">Lightly Active</option>
-                <option value="3">Moderately Active</option>
-                <option value="4">Very Active</option>
-                <option value="5">Extremely Active</option>
-            </select>
+            <label class="custom-select">
+                <!-- How active are you? -->
+                <select name="activity" class="field" id="activity" required>
+                    <option value="1">Sedentary</option>
+                    <option value="2">Lightly Active</option>
+                    <option value="3">Moderately Active</option>
+                    <option value="4">Very Active</option>
+                    <option value="5">Extremely Active</option>
+                </select>
+            </label>
             
             <!--Enter Goal and Contact Info
             <h4>Your Goal + Contact Info</h4>
