@@ -49,10 +49,48 @@ p {
     font-size: smaller;
 }
 
+.form-section {
+    width: 100vw;
+    display: grid;
+    justify-content: center;
+}
+
 form {
+    border-radius: 15px;
+    border-style:dashed;
+    padding: 15px;
+    display: grid;
+    justify-content: center;
+    width: fit-content;
+    width: 500px;
+}
+
+input {
     border-radius: 5px;
-    border-style: groove;
-    padding: 5px;
+    border-style: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 450px;
+}
+
+select {
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.activity-select {
+    display: grid;
+    justify-content: left;
+    border-style: none;
+}
+
+button {
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 5px;
+    border-style: none;
 }
 
 footer {
@@ -65,20 +103,49 @@ footer {
     </style>
 </head>
 <body>
-    <section>
+    <section class="hero">
         <h1>Calories...wtf?</h1>
         <h4>Let's make calories less confusing, shall we?</h4>
         <p>This free tool will help you calculate your recommended caloric intake based on your body type, goals and lifestyle.</p>
     </section>
-    <section>
+    <section class="form-section">
         <form class="form" id="bmrForm" onsubmit="calcBMR()">
+            
+            <!--Enter Age and Gender-->
+            <h4>Age & Gender</h4>
             <select name="gender" id="gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-            </select>            
+            </select>
+            <input type="range" id="age" name="amountRange" min="16" max="80" value="30" oninput="this.form.amountInput.value=this.value">
+            <input type="number" id="age" name="amountInput" min="16" max="80" value="30" oninput="this.form.amountRange.value=this.value">
+            
+            <!--Enter Height and Weight-->
+            <h4>Your Measurements</h4>            
             <input type="number" id="weight" placeholder="Weight in KG" required>
             <input type="number" id="height" placeholder="Height in CM" required>
-            <input type="number" id="age" placeholder="How old are you?" required>
+            
+            <!--Enter Activity Levels-->
+            <h4>Your Activity Level</h4>
+            <fieldset class="activity-select" id="activity">
+                <label><input type="radio" value="sedentary" name="activity">Sedentary</label>
+                <label><input type="radio" value="lightly active" name="activity">Lightly Active</label>
+                <label><input type="radio" value="moderately active" name="activity">Moderately Active</label>
+                <label><input type="radio" value="very active" name="activity">Very Active</label>
+                <label><input type="radio" value="extremeley active" name="activity">Extremeley Active</label>
+            </fieldset>
+            
+            <!--Enter Goal and Contact Info-->
+            <h4>Your Goal + Contact Info</h4>
+                <input type="text" placeholder="What is your name?">
+                <input type="email" placeholder="Where shall we send your results?">
+                <select name="goal" id="goal">
+                    <option value="lose">Lose Weight</option>
+                    <option value="gain">Gain Muscle</option>
+                    <option value="maintain">Maintain</option>
+                </select>
+            
+                <!--Submit Button-->
             <button type="submit" id="submitBtn">Do Magic!</button>
         </form>
         <p id="output"></p>
